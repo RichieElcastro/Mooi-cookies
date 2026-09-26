@@ -1,0 +1,6 @@
+{
+  "name": "Sistem Pre-Order Makanan & Minuman",
+  "description": "Aplikasi pre-order dessert artisanal khusus fresh-baked gourmet cookies dan premium basque cheesecake dengan jadwal batch oven, kuota slot PO, dan dashboard dapur.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

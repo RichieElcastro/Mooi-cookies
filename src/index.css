@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --brand-cream: #F3E9DD;
+    --brand-brown: #633F35;
+    --brand-brown-light: #8A5A4D;
+    --brand-soft-cream: #FFF9F2;
+    --brand-muted-beige: #E7D5C4;
+  }
+
+  body {
+    background-color: #F3E9DD;
+    color: #633F35;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.font-display {
+  font-family: 'Fraunces', Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom scrollbar matching brand warm cream and dark chocolate */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F3E9DD;
+}
+::-webkit-scrollbar-thumb {
+  background: #CDB39E;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8A5A4D;
+}

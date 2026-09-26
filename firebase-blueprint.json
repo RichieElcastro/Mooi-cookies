@@ -1,0 +1,104 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with role-based access for admin, affiliate, or customer",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "affiliate", "pelanggan"] },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "active", "suspended", "inactive"] },
+        "affiliateCode": { "type": "string" },
+        "mustChangePassword": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "lastLoginAt": { "type": "string" }
+      },
+      "required": ["id", "name", "role"]
+    },
+    "Affiliate": {
+      "title": "Affiliate",
+      "description": "Affiliate / PIC drop-point coordinator profile created by admin",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "active", "suspended", "inactive"] },
+        "pickupLocationName": { "type": "string" },
+        "pickupAddress": { "type": "string" },
+        "pickupNotes": { "type": "string" },
+        "commissionRatePercent": { "type": "number" },
+        "bankAccount": { "type": "string" },
+        "mustChangePassword": { "type": "boolean" },
+        "lastLoginAt": { "type": "string" },
+        "registeredAt": { "type": "string" },
+        "createdBy": { "type": "string" }
+      },
+      "required": ["id", "code", "name", "phone", "status"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Pre-order transaction document",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "orderType": { "type": "string" },
+        "pickupLocationType": { "type": "string" },
+        "affiliateCode": { "type": "string" },
+        "affiliateName": { "type": "string" },
+        "affiliatePickupLocation": { "type": "string" },
+        "affiliateCommission": { "type": "number" },
+        "affiliateCommissionStatus": { "type": "string" },
+        "deliveryAddress": { "type": "string" },
+        "deliveryNotes": { "type": "string" },
+        "poDate": { "type": "string" },
+        "poSlot": { "type": "string" },
+        "subtotal": { "type": "number" },
+        "deliveryFee": { "type": "number" },
+        "discount": { "type": "number" },
+        "total": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "paymentStatus": { "type": "string" },
+        "orderStatus": { "type": "string" }
+      },
+      "required": ["id", "customerName", "customerPhone", "poDate", "total", "orderStatus"]
+    },
+    "AffiliateSettings": {
+      "title": "AffiliateSettings",
+      "description": "Global commission and customer reward configuration managed by Admin",
+      "type": "object",
+      "properties": {
+        "defaultCommissionRatePercent": { "type": "number" },
+        "customerDiscountPerPortion": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["defaultCommissionRatePercent", "customerDiscountPerPortion"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User accounts and roles"
+    },
+    "/affiliates/{affiliateId}": {
+      "schema": "Affiliate",
+      "description": "Affiliate accounts and drop-point credentials"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Customer pre-orders"
+    },
+    "/settings/affiliate": {
+      "schema": "AffiliateSettings",
+      "description": "Admin settings for commission and discount per portion"
+    }
+  }
+}
